@@ -10,9 +10,6 @@ Access Azure Cloud Shell and Connect to AKS
 
 - Select Bash if prompted 
 
-![picture 1](../../images/1ccba30eda4a59d6473e7ccd94e63f0901c6aed775e74445fcc3910aa23f7955.png)  
-
-
 - Run the following command on Azure Cloud Shell
 
 ```sh
