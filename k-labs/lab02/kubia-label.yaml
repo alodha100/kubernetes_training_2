@@ -1,0 +1,131 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-pod-stable
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ui
+      rel: stable
+  template:
+    metadata:
+      labels:
+        app: ui
+        rel: stable
+    spec:
+      containers:
+      - name: kubia-app
+        image: stv707/kubia:v14
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-pod-beta
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ui
+      rel: beta
+  template:
+    metadata:
+      labels:
+        app: ui
+        rel: beta
+    spec:
+      containers:
+      - name: kubia-app
+        image: stv707/kubia:v14
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-catalog-stable
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pc
+      rel: stable
+  template:
+    metadata:
+      labels:
+        app: pc
+        rel: stable
+    spec:
+      containers:
+      - name: kubia-app
+        image: stv707/kubia:v14
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-catalog-beta
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pc
+      rel: beta
+  template:
+    metadata:
+      labels:
+        app: pc
+        rel: beta
+    spec:
+      containers:
+      - name: kubia-app
+        image: stv707/kubia:v14
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service-stable
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: os
+      rel: stable
+  template:
+    metadata:
+      labels:
+        app: os
+        rel: stable
+    spec:
+      containers:
+      - name: kubia-app
+        image: stv707/kubia:v14
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service-beta
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: os
+      rel: beta
+  template:
+    metadata:
+      labels:
+        app: os
+        rel: beta
+    spec:
+      containers:
+      - name: kubia-app
+        image: stv707/kubia:v14
+        ports:
+        - containerPort: 8080

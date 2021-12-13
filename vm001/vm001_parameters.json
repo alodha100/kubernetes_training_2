@@ -1,0 +1,68 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "southeastasia"
+        },
+        "networkInterfaceName": {
+            "value": "vm001835"
+        },
+        "networkSecurityGroupName": {
+            "value": "vm001-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "aks-subnet"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/89d30a24-7581-43fb-92fe-6951c64ba30f/resourceGroups/MC_aks_rg_aks_lab_southeastasia/providers/Microsoft.Network/virtualNetworks/aks-vnet-17401582"
+        },
+        "publicIpAddressName": {
+            "value": "vm001-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "vm001"
+        },
+        "virtualMachineComputerName": {
+            "value": "vm001"
+        },
+        "virtualMachineRG": {
+            "value": "vm001_rg"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B1s"
+        },
+        "adminUsername": {
+            "value": "droot"
+        },
+        "adminPublicKey": {
+            "value": null
+        }
+    }
+}

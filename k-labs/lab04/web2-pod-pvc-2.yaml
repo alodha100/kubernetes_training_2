@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: webstar2
+spec:
+  replicas: 1
+  selector:
+    app: webstar2
+  template:
+    metadata:
+      labels:
+        app: webstar2
+    spec:
+      containers:
+      - name: webstar2
+        image: alpine
+        volumeMounts:
+          - name: my-data
+            mountPath: /var/nfs
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do date >> /var/nfs/webstar2.txt; sleep 20; echo webstar2 >> /var/nfs/webstar2.txt; done"]
+        ports:
+        - containerPort: 7171
+          protocol: TCP
+      volumes:
+        - name: my-data
+          persistentVolumeClaim:
+            claimName: nfspv-15g

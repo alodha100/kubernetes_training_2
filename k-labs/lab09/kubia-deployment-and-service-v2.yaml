@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubia
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubia
+  template:
+    metadata:
+      name: kubia
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - image: stv707/kubia:v2
+        name: nodejs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  type: ClusterIP
+  selector:
+    app: kubia
+  ports:
+  - port: 80
+    targetPort: 8080

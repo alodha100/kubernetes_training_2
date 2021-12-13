@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: azure-app
+spec:
+      containers:
+      - name: azure-app
+        image: alpine
+        volumeMounts:
+          - name: my-data
+            mountPath: /var/nfs
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do date >> /var/nfs/azure-app.txt; sleep 20; echo azure-app>> /var/nfs/azure-app.txt; done"]
+        ports:
+        - containerPort: 7171
+          protocol: TCP
+      volumes:
+        - name: my-data
+          persistentVolumeClaim:
+            claimName: azure-disk-7g

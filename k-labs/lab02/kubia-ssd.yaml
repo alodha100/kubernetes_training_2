@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-ssd
+spec:
+  nodeSelector:
+    ssd: "true"
+  containers:
+  - image: stv707/kubia:v14
+    name: kubia-ssd
+    ports:
+    - containerPort: 8080

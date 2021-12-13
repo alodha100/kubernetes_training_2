@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-client
+  labels:
+    app: mysql-client
+    env: clienttool
+spec:
+  containers:
+  - name: mysql-client
+    env:
+    - name: MYSQL_ALLOW_EMPTY_PASSWORD
+      value: "yes"
+    image: mysql

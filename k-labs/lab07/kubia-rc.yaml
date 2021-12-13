@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: kubiarc
+spec:
+  replicas: 3
+  selector:
+    app: kubiarc
+  template:
+    metadata:
+      labels:
+        app: kubiarc
+    spec:
+      containers:
+      - name: kubiarc
+        image: stv707/kubia:v14
+        ports:
+        - containerPort: 8080

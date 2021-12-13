@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kubiars
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubiars
+  template:
+    metadata:
+      labels:
+        app: kubiars
+    spec:
+      containers:
+      - name: kubiars
+        image: stv707/kubia:v14
+        ports:
+        - containerPort: 8080

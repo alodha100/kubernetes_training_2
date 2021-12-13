@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-vote
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-vote
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  template:
+    metadata:
+      labels:
+        app: frontend-vote
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: frontend-vote
+        image: stv707/voteapp:v1
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+        env:
+        - name: REDIS
+          value: backend-vote
+        - name: TITLE
+          value: "LoadBalancer Test App"
+        - name: VOTE1VALUE
+          value: iPhone
+        - name: VOTE2VALUE
+          value: Android

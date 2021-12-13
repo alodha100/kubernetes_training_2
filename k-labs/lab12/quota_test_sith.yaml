@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-quota-demos
+spec:
+  selector:
+    matchLabels:
+      purpose: quota-demos
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        purpose: quota-demos
+    spec:
+      containers:
+      - name: pod-quota-demos
+        image: nginx

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: centos
+spec:
+  replicas: 2
+  selector:
+    app: centos
+  template:
+    metadata:
+      labels:
+        app: centos
+    spec:
+      containers:
+      - name: centos
+        image: centos:7
+        volumeMounts:
+          - name: my-data
+            mountPath: /data/
+        ports:
+        - containerPort: 7171
+          protocol: TCP
+      volumes:
+        - name: my-data
+          nfs:
+            server: master.example.local
+            path: /nfsdata/dat1

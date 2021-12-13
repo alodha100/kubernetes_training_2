@@ -1,0 +1,6 @@
+apiVersion: extensions.example.com/v1
+kind: Website
+metadata:
+  name: stvweb1
+spec:
+  gitRepo: https://github.com/stv707/stvweb1.git

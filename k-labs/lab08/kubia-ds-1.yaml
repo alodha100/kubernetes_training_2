@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kubiads
+spec:
+  selector:
+    matchLabels:
+      app: kubiads
+  template:
+    metadata:
+      labels:
+        app: kubiads
+    spec:
+      containers:
+      - name: main
+        image: stv707/kubia:v14

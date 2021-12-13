@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kubiamx
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+         - kubiamx
+         - foo
+  template:
+    metadata:
+      labels:
+        app: kubiamx
+    spec:
+      containers:
+      - name: kubiamx
+        image: stv707/kubia:latest
