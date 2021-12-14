@@ -17,3 +17,13 @@ az deployment group create --resource-group aci-demo-rg --template-file acideplo
 ```sh 
 az container show --resource-group aci-demo-rg --name myContainerGroup --output table
 ```
+
+5. Head over to Azure portal to view/verify ac-demo-rg Resource group
+
+6. Remove the demo 
+```sh 
+az group delete -n aci-demo-rg
+Are you sure you want to perform this operation? (y/n): y
+```
+
+# END
