@@ -18,7 +18,7 @@ Kube Training Assets
 2. use git clone to clone this HUB
   
    ```sh 
-   git clone https://github.com/stv707/kubernetes_training.git
+   git clone https://github.com/stv707/kubernetes_training_2.git
    ```
 
 3. Change Directory to hub directory  
