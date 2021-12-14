@@ -41,7 +41,7 @@ SUBID=$(az account list | grep id | awk '{print $2}'  | sed 's/"//g' | sed 's/,/
 function aksvnet () 
 {
 
-AKSVNET=$(az network vnet list -o tsv | grep MC  | awk '{print $13}') 
+AKSVNET=$(az network vnet list -o tsv | grep MC  | awk '{print $10}') 
 
 }
 
