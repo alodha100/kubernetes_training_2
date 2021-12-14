@@ -24,7 +24,7 @@ Kube Training Assets
 3. Change Directory to hub directory  
 
    ```sh 
-   cd kubernetes_training/
+   cd kubernetes_training_2/
    ```
 
 4. Execute main.sh with aks as argument 
