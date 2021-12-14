@@ -59,8 +59,8 @@ az network nsg rule create -g $AKSRGNAME --nsg-name $NSGNAME -n open_nfs --prior
 function aks_subnet()
 {
 
-RG=$(az network vnet list -o tsv | grep MC  | awk '{print $14}') 
-VNET=$(az network vnet list -o tsv | grep MC  |  awk '{print $12}')
+RG=$(az network vnet list -o tsv | grep MC  | awk '{print $15}') 
+VNET=$(az network vnet list -o tsv | grep MC  |  awk '{print $13}')
 SUBNET=$(az network vnet subnet list --vnet-name $VNET --resource-group $RG  -o tsv  | awk '{print $1}') 
 
 }
