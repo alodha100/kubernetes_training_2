@@ -84,16 +84,22 @@ cat nginx-unprivileged-nonroot.yaml
 
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 
-
-
+**expected to fail 
+**the container image automatically tried to use userid 2000 to bind NGINX to port 80.
+**This request was denied by the default privilege pod security policy, so the pod fails to start
 
 ```
 
 # Step 6
-Labels can be attached to any Kubernetes object, including nodes
+Create a custom pod security policy
 
 ```sh
 
+cat psp-deny-privileged.yaml
+
+kubectl apply -f psp-deny-privileged.yaml
+
+kubectl get psp | grep privileged
 
 ```
 
