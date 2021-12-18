@@ -1,5 +1,4 @@
-#  Lab02-Extra - Pods SecurityContext
-
+#  Lab02-Extra - Pods Security Policy
 # Step 1 
 Enable pod security policy in AKS 
 - requirement for running in your own system: 
@@ -72,7 +71,6 @@ kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 **expected to fail 
 **the container image automatically tried to use root to bind NGINX to port 80.
 **This request was denied by the default privilege pod security policy, so the pod fails to start
-
 ```
 
 # Step 5
@@ -87,7 +85,6 @@ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 **expected to fail 
 **the container image automatically tried to use userid 2000 to bind NGINX to port 80.
 **This request was denied by the default privilege pod security policy, so the pod fails to start
-
 ```
 
 # Step 6
@@ -100,7 +97,6 @@ cat psp-deny-privileged.yaml
 kubectl apply -f psp-deny-privileged.yaml
 
 kubectl get psp | sed '1p;/privileged/!d'
-
 ```
 
 # Step 7
@@ -112,32 +108,55 @@ kubectl apply -f psp-deny-privileged-clusterrole.yaml
 
 kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
-
+kubectl get clusterrolebindings.rbac.authorization.k8s.io  | grep psp
 ```
 
 
 # Step 8
-Deploy pods on different namespaces
+Test the creation of an unprivileged pod again
 
 ```sh
+kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 
+kubectl-nonadminuser get pods
 
+kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 ```
 
 # Step 9
-Delete/Remove pods
+Test the creation of an privileged pod 
 
 ```sh
+kubectl-nonadminuser apply -f nginx-privileged.yaml
 
-
+**expected to fail 
+**Policy do not allow privileged pod.
 ```
 
 # Step 10 
-Remove node label 
+Test the creation of an unprivileged  non root pod 
 
 ```sh 
+kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 
+kubectl-nonadminuser get pods
 
+kubectl logs nginx-unprivileged-nonroot  -n psp-aks
 ```
+
+# Step 11 
+Edit the nginx-unprivileged-nonroot.yaml and set the runAsUser as 0 
+
+```sh 
+kubectl-nonadminuser delete -f nginx-unprivileged-nonroot.yaml
+
+vim nginx-unprivileged-nonroot.yaml
+**Change runAsUser to 0 
+
+kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
+
+kubectl-nonadminuser get pods
+```
+
 
 END
