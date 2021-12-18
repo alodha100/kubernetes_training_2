@@ -2,12 +2,12 @@
 
 # Step 1 
 Enable pod security policy in AKS 
-- requirement: 
+- requirement for running in your own system: 
     * az cli version 2.0.61 or later 
-    * run az --version to verify you have az cli version 2.0.61
+    * run "az --version" to verify you have az cli version 2.0.61
     * if you don't have, visit: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
 
-- The following should be run in Azure Cloud Shell where your AKS is installed 
+- If the above requirements cannot be met, then use Azure Cloud Shell where your AKS is installed.
 
 ```sh
 az extension add --name aks-preview
@@ -25,7 +25,7 @@ az provider register --namespace Microsoft.ContainerService
 
 az aks update --resource-group aks_rg --name aks_lab --enable-pod-security-policy
 
-kubectl get psp | grep privileged
+kubectl get psp | sed '1p;/privileged/!d'
 ```
 
 # Step 2 
@@ -99,14 +99,18 @@ cat psp-deny-privileged.yaml
 
 kubectl apply -f psp-deny-privileged.yaml
 
-kubectl get psp | grep privileged
+kubectl get psp | sed '1p;/privileged/!d'
 
 ```
 
 # Step 7
-Create namespace to split pods to specific namespace 
+Allow user account (service Account) to use the custom pod security policy
 
 ```sh
+
+kubectl apply -f psp-deny-privileged-clusterrole.yaml
+
+kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
 
 ```
