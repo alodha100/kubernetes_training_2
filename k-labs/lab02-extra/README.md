@@ -26,7 +26,6 @@ az provider register --namespace Microsoft.ContainerService
 az aks update --resource-group aks_rg --name aks_lab --enable-pod-security-policy
 
 kubectl get psp | grep privileged
-
 ```
 
 # Step 2 
@@ -36,7 +35,6 @@ Create a test user in an AKS cluster
 - Since AAD is not in our topic, we will create a simulated non-admin user to test pod SecurityContext. ( using serviceaccount )
 
 ```sh
-
 kubectl create namespace psp-aks
 
 kubectl create serviceaccount --namespace psp-aks nonadmin-user
@@ -48,16 +46,12 @@ kubectl get rolebindings.rbac.authorization.k8s.io -n psp-aks
 alias kubectl-admin='kubectl --namespace psp-aks'
 
 alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-user --namespace psp-aks'
-
-
-
 ```
 
 # Step 3 
 Test the creation of a privileged pod
 
 ```sh
-
 cat nginx-privileged.yaml
 
 kubectl-nonadminuser apply -f nginx-privileged.yaml
@@ -65,7 +59,6 @@ kubectl-nonadminuser apply -f nginx-privileged.yaml
 **expected to fail 
 **the pod specification requested privileged escalation
 **This request is denied by the default privilege pod security policy, so the pod fails to be scheduled
-
 ```
 
 # Step 4 
@@ -76,14 +69,22 @@ cat nginx-unprivileged.yaml
 
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 
-
+**expected to fail 
+**the container image automatically tried to use root to bind NGINX to port 80.
+**This request was denied by the default privilege pod security policy, so the pod fails to start
 
 ```
 
 # Step 5
-Create multi label for Pod/Deployment and Filter using Label
+Test creation of a pod with a specific user context
 
 ```sh
+
+cat nginx-unprivileged-nonroot.yaml
+
+kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
+
+
 
 
 ```
