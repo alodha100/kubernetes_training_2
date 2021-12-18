@@ -63,13 +63,18 @@ cat nginx-privileged.yaml
 kubectl-nonadminuser apply -f nginx-privileged.yaml
 
 **expected to fail 
+**the pod specification requested privileged escalation
+**This request is denied by the default privilege pod security policy, so the pod fails to be scheduled
 
 ```
 
 # Step 4 
-Inter-Pod Networking  
+Test creation of an unprivileged pod
 
 ```sh
+cat nginx-unprivileged.yaml
+
+kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 
 
 
