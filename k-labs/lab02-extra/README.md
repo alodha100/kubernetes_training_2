@@ -18,7 +18,7 @@ az feature register --name PodSecurityPolicyPreview --namespace Microsoft.Contai
 
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
 
-**Please wait until status shows registered!! 
+**Please wait until status shows registered!! ( it will take several Minutes )
 **Run a simple infinite loop with the previous command to view the status
 
 az provider register --namespace Microsoft.ContainerService
@@ -36,17 +36,33 @@ Create a test user in an AKS cluster
 - Since AAD is not in our topic, we will create a simulated non-admin user to test pod SecurityContext. ( using serviceaccount )
 
 ```sh
+
 kubectl create namespace psp-aks
 
 kubectl create serviceaccount --namespace psp-aks nonadmin-user
+
+kubectl create rolebinding --namespace psp-aks psp-aks-editor  --clusterrole=edit --serviceaccount=psp-aks:nonadmin-user
+
+kubectl get rolebindings.rbac.authorization.k8s.io -n psp-aks
+
+alias kubectl-admin='kubectl --namespace psp-aks'
+
+alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-user --namespace psp-aks'
+
 
 
 ```
 
 # Step 3 
-Create and Verify Multi Container Pod ( sidecar container )
+Test the creation of a privileged pod
 
 ```sh
+
+cat nginx-privileged.yaml
+
+kubectl-nonadminuser apply -f nginx-privileged.yaml
+
+**expected to fail 
 
 ```
 
