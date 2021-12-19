@@ -13,7 +13,8 @@ spec:
     emptyDir: {}
   containers:
   - name: security-context-cont
-    image: stv707/kubia:v14
+    image: stv707/multitool:v1
+    command: ["/bin/sleep", "999999"]
     volumeMounts:
     - name: security-context-vol
       mountPath: /data/test
