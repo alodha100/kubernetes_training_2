@@ -22,3 +22,4 @@ spec:
           - CHOWN
           - SYS_TIME
           - SYS_ADMIN
+          - MKNOD
