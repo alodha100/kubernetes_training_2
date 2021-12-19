@@ -13,7 +13,7 @@ spec:
     emptyDir: {}
   containers:
   - name: security-context-cont
-    image: ubuntu:latest
+    image: stv707/capsh:v1
     command: ["/bin/sleep", "999999"]
     volumeMounts:
     - name: security-context-vol
