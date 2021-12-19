@@ -71,24 +71,12 @@ kubectl exec -it box2 -- sh
 ```
 
 # Step 5
-Create multi label for Pod/Deployment and Filter using Label
+Create pod with security context 
 
 ```sh
-kubectl create -f kubia-label.yaml
+kubectl apply -f seccon1.yaml 
 
-kubectl get pod
 
-kubectl get 
-
-kubectl get pod -l app=ui,rel=stable
-
-kubectl get pod -l app=pc,rel=stable
-
-kubectl get pod -l app=os,rel=stable
-
-kubectl get pod -l 'app in (ui,os,pc)',rel=stable
-
-kubectl get pod -l 'app in (ui,os,pc)',rel=beta
 
 ```
 
@@ -96,19 +84,7 @@ kubectl get pod -l 'app in (ui,os,pc)',rel=beta
 Labels can be attached to any Kubernetes object, including nodes
 
 ```sh
-kubectl get nodes
 
-kubectl label node <node-name-1> ssd=true
-
-kubectl get nodes --show-labels | grep ssd
-
-kubectl get nodes -l ssd=true
-
-kubectl create -f kubia-ssd.yaml
-
-kubectl get pod kubia-ssd -o wide 
-
-** Verify the pod only runs on node that has label ssd=true
 
 ```
 
@@ -116,27 +92,7 @@ kubectl get pod kubia-ssd -o wide
 Create namespace to split pods to specific namespace 
 
 ```sh
-kubectl create namespace prod-ns
 
-kubectl create namespace dev-ns
-
-kubectl get namespaces
-
-kubectl describe sa default | grep Namespace
-
-kubectl config set-context --current --namespace=prod-ns
-
-kubectl describe sa default | grep Namespace
-
-kubectl get pods
-
-kubectl create -f kubia-ns.yaml
-
-kubectl get namespaces
-
-kubectl config set-context --current --namespace=default
-
-kubectl get pods 
 
 ```
 
@@ -145,17 +101,7 @@ kubectl get pods
 Deploy pods on different namespaces
 
 ```sh
-kubectl create -f kubia-namespace-full.yaml
 
-kubectl get pod --namespace prod-ns
-
-kubectl get pod --namespace dev-ns
-
-kubectl get pod -A
-
-kubectl get pod  -l rel=beta -A
-
-kubectl get pod  -l rel=stable -A
 
 ```
 
@@ -185,14 +131,6 @@ kubectl delete ns kubia-app-ns
 Remove node label 
 
 ```sh 
-
-kubectl get nodes -L ssd
-
-kubectl get nodes --show-labels  | grep ssd
-
-kubectl label node <NODE_NAME> ssd-
-
-kubectl get nodes -L ssd
 
 ```
 
