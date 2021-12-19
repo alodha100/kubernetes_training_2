@@ -13,7 +13,7 @@ spec:
     emptyDir: {}
   containers:
   - name: security-context-cont
-    image: stv707/multitool:v1
+    image: ubuntu:latest
     command: ["/bin/sleep", "999999"]
     volumeMounts:
     - name: security-context-vol
