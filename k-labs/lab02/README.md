@@ -225,14 +225,12 @@ Delete/Remove pods
 
 ```sh
 
+** Delete all pod to prepare for next lab
 
 ```
 
 # Step 10 
-Remove node label 
+Proceed to lab02-extra if time permits 
 
-```sh 
-
-```
 
 END
