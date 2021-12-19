@@ -196,9 +196,27 @@ kubectl apply -f seccon4.yaml
 
 kubectl get pod -o wide 
 
+kubectl exec -it seccon4 -- sh
 
+/ # id
+** note: the container is running as root
 
+/ # ps aux
+** process running under root 
 
+/ # capsh --print
+** note: there is capability granted for this container 
+
+/ # ping <kubia-pod IP>
+** ping another container, it should work
+
+/ # apk add bash
+** install software inside container, it should install
+
+/ # curl <kubia-pod-ip>:8080
+** software connection works, API, external access will work
+
+/ # exit
 
 ```
 
@@ -206,21 +224,7 @@ kubectl get pod -o wide
 Delete/Remove pods
 
 ```sh
-kubectl delete pod kubia-ssd 
 
-kubectl delete pod -l rel=beta
-
-kubectl delete ns prod-ns
-
-kubectl config set-context --current --namespace=default
-
-kubectl delete  -f kubia-namespace-full.yaml
-
-kubectl delete  -f kubia-label.yaml
-
-kubectl delete ns dev-ns
-
-kubectl delete ns kubia-app-ns
 
 ```
 
