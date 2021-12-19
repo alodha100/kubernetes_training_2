@@ -3,8 +3,10 @@ kind: Pod
 metadata:
   name: seccon1
 spec:
+# Apply SecurityContext for entire pod
   securityContext:
     runAsUser: 2500
+    runAsGroup: 3000
     fsGroup: 2000
   volumes:
   - name: security-context-vol

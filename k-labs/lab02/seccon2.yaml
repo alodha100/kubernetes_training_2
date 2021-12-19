@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: seccon2
+spec:
+# Apply SecurityContext for entire pod
+  securityContext:
+    runAsUser: 2000
+    runAsGroup: 3000
+    fsGroup: 4000
+  volumes:
+  - name: shared-vol
+    emptyDir: {}
+  containers:
+  - name: one
+    image: stv707/multitool:v1
+    command: ["/bin/sleep", "999999"]
+    volumeMounts:
+    - name: shared-vol
+      mountPath: /data/sec
+  - name: two
+    image: stv707/multitool:v1
+    command: ["/bin/sleep", "999999"]
+    volumeMounts:
+    - name: shared-vol
+      mountPath: /data/sec
+    # Override SecurityContext for specific container in pod
+    securityContext:
+      runAsUser: 2200
+      runAsGroup: 3300
