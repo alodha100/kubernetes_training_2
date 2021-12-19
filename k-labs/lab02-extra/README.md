@@ -158,5 +158,19 @@ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 kubectl-nonadminuser get pods
 ```
 
+# Step 12 
+Clean Up
+```sh
+az aks update --resource-group aks_rg --name aks_lab --disable-pod-security-policy
+
+kubectl delete -f psp-deny-privileged-clusterrolebinding.yaml
+
+kubectl delete -f psp-deny-privileged-clusterrole.yaml
+
+kubectl delete -f psp-deny-privileged.yaml
+
+kubectl delete namespace psp-aks
+```
+
 
 END
