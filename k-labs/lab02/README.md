@@ -150,18 +150,54 @@ kubectl delete -f seccon2.yaml
 ```
 
 # Step 7
-Create namespace to split pods to specific namespace 
+Verify securityContext Linux Kernel capabilities ( drop all )
 
 ```sh
+kubectl get pod
+** Make sure kubia-pod still running 
 
+cat seccon3.yaml
+
+kubectl apply -f seccon3.yaml
+
+kubectl get pod -o wide
+** note the kubia-pod IP address 
+
+kubectl exec -it seccon3 -- sh
+
+/ # capsh --print
+** note: there is no capability granted for this container 
+
+/ # id
+** note: the container is running as root
+
+/ # ps aux
+** process running under root 
+
+/ # ping <kubia-pod IP>
+** ping another container, it should failed, because container do not have network capability 
+
+/ # apk add bash
+** install software inside container, it should fail, because filesystem/permission capability not granted
+
+/ # curl <kubia-pod-ip>:8080
+** software connection works, API, external access will work, underlying kernel capability is disabled ( secure run )
+
+/ # exit
 
 ```
 
 
 # Step 8
-Deploy pods on different namespaces
+Verify securityContext Linux Kernel capabilities ( allow limited )
 
 ```sh
+kubectl apply -f seccon4.yaml
+
+kubectl get pod -o wide 
+
+
+
 
 
 ```
