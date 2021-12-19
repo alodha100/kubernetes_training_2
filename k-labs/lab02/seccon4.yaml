@@ -23,3 +23,8 @@ spec:
           - SYS_TIME
           - SYS_ADMIN
           - MKNOD
+          - CHROOT 
+          - SETUID
+          - SUID
+          - SETGID
+          - SYS_CHROOT
