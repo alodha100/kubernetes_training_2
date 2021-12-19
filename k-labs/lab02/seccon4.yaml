@@ -28,3 +28,4 @@ spec:
           - SUID
           - SETGID
           - SYS_CHROOT
+          - NET_RAW
