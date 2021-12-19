@@ -3,11 +3,6 @@ kind: Pod
 metadata:
   name: seccon3
 spec:
-# Apply SecurityContext for entire pod
-  securityContext:
-    runAsUser: 2500
-    runAsGroup: 3000
-    fsGroup: 2000
   volumes:
   - name: security-context-vol
     emptyDir: {}
@@ -19,9 +14,6 @@ spec:
     - name: security-context-vol
       mountPath: /data/test
     securityContext:
-      privileged: false
-      allowPrivilegeEscalation: true
       capabilities:
-        add: 
-          - SUID
-          - CHOWN
+        drop: 
+          - ALL
