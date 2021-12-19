@@ -230,7 +230,10 @@ Delete/Remove pods
 ```
 
 # Step 10 
-Proceed to lab02-extra if time permits 
+If time permits, you may continue to extra lab 
 
+```sh 
+Proceed to lab02-extra if time permits 
+```
 
 END
