@@ -251,7 +251,7 @@ if [ -s $HOME/.loc ]
  then
  LOC=$(cat $HOME/.loc)
  echo "Seems the location already set to $LOC"
- echo -n "Are we Okay with this?[ ]\b\b\c"
+ echo -n "Are we Okay with this?[ ]"\b\b\c
  read ASTA
    if [ $ASTA == 'n' ]
    then 
