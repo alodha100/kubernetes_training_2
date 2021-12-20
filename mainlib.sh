@@ -255,7 +255,7 @@ if [ -s $HOME/.loc ]
  read ASTA
    if [ $ASTA == 'n' ]
    then 
-   locaset
+   locset
    fi 
 fi 
 }
