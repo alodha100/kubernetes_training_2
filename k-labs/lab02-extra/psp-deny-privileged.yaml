@@ -7,10 +7,16 @@ spec:
   seLinux:
     rule: RunAsAny
   supplementalGroups:
-    rule: RunAsAny
+    rule: 'MustRunAs'
+    ranges: 
+      - min: 1 
+        max: 65535
   runAsUser:
-    rule: RunAsAny
+    rule: 'MustRunAsNonRoot'
   fsGroup:
-    rule: RunAsAny
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1 
+        max: 65535
   volumes:
   - '*'

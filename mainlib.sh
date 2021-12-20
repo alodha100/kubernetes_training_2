@@ -250,9 +250,14 @@ function setloc()
 if [ -s $HOME/.loc ]
  then
  LOC=$(cat $HOME/.loc)
- else
- locset
-fi
+ echo "Seems the location already set to $LOC"
+ echo -n "Are we Okay with this?[ ]\b\b\c"
+ read ASTA
+   if [ $ASTA == 'n' ]
+   then 
+   locaset
+   fi 
+fi 
 }
 
 function non()

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-1
+spec:
+  volumes:
+  - name: security-context-vol
+    emptyDir: {}
+  containers:
+  - name: security-context-cont
+    image: stv707/kubia:v14
+    volumeMounts:
+    - name: security-context-vol
+      mountPath: /data/test
+    securityContext:
+      allowPrivilegeEscalation: false
