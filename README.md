@@ -57,4 +57,4 @@ Thank You, Have Fun, Cheers<br>
 Steven<br>
 smahalin@redhat.com
 
-* Hub Will go Private on 22nd Oct 2021 @ 8pm 
+* Hub Will go Private on 22nd Dec 2021 @ 8pm 
