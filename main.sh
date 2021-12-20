@@ -9,9 +9,10 @@ source  ./mainsub2.sh
 # Variables
 VMNAME=$1
 
-#Overwrite location because southeastasia(singapore have no more resources)
-LOC=
 echo eastasia > $HOME/.loc
+
+#Overwrite location because southeastasia(singapore have no more resources)
+LOC=eastasia
 
 ##main program
 if [ $# -ne 1 ]
