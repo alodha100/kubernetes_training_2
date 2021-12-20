@@ -5,12 +5,13 @@ metadata:
   namespace: app1
   annotations:
    #Comment the nginx class to use Azure http routing , uncomment addon-http-application-routing 
-    kubernetes.io/ingress.class: "nginx"
-   #kubernetes.io/ingress.class: addon-http-application-routing
+   #kubernetes.io/ingress.class: "nginx"
+   kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
     # Change to app1.<azure_dns> 
-  - host: app1.cognitoz.org
+  - host: app1.a5c3100ed8fc4222aae7.southeastasia.aksapp.io
+
     http:
       paths:
       - path: /
