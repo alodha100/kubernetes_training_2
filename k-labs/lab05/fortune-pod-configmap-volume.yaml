@@ -36,4 +36,4 @@ spec:
     emptyDir: {}
   - name: config
     configMap:
-      name: fortune-myconfig
+      name: fortune-config

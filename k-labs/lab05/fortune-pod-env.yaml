@@ -8,6 +8,8 @@ spec:
     env:
     - name: INTERVAL
       value: "30"
+    - name: TBS
+      value: "1000"
     name: html-generator
     volumeMounts:
     - name: html
