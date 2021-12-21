@@ -231,6 +231,8 @@ Cloud based Kubernetes provides this<br>
 
  kubectl apply -f azure-pv2.yaml
 
+ kubectl get pod | grep az
+
  kubectl exec -it azure-app2 -- sh
   # df -h /var/nfs
   # ls -l /var/nfs
