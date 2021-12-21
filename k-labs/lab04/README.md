@@ -225,7 +225,7 @@ Cloud based Kubernetes provides this<br>
  kubectl get pvc
  kubectl get pod | grep azure-app 
 
- kubectl delete -f azure-pod-pvc-2.yaml
+ kubectl apply -f azure-pod-pvc-2.yaml
  
  kubectl get pod | grep az
 
