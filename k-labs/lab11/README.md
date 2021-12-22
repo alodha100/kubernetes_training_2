@@ -21,7 +21,9 @@ kubectl create -f multi-completion-parallel-batch-job.yaml
 
 kubectl get po
 
-kubectl scale job multi-completion-batch-job --replicas 3
+
+* Removed in new version ( use parallel in yaml def)
+##kubectl scale job multi-completion-batch-job --replicas 3
 ```
 
 # Lab11B
