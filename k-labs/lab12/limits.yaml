@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: example
-  namespace: default
+  name: sith-limit
+  namespace: sith
 spec:
   limits:
   - type: Pod
