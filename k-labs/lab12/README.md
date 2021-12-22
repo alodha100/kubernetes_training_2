@@ -127,7 +127,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 ** Clone Github
 # droot@vm001:~$ git clone https://github.com/stv707/kubernetes_training_2.git
 
-# droot@vm001:~$ cd kubernetes_training/k-labs/lab12/
+# droot@vm001:~$ cd kubernetes_training_2/k-labs/lab12/
 
 ** Create Namespace 
 # droot@vm001:~/kubernetes_training_2/k-labs/lab12$ kubectl create namespace jedi

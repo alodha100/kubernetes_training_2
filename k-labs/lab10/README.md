@@ -165,7 +165,7 @@ mysql> SELECT * FROM test.messages;
 mysql> exit;
 
 
-kubectl get pv -l app=mysql
+kubectl get pv
 kubectl get pvc -l app=mysql
 
 
