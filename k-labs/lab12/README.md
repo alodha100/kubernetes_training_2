@@ -79,7 +79,7 @@ kubectl describe pod kubia-manual
 
 # @Azure:~$  VMIP=$(az vm show -d -g vm001_rg -n vm001 --query "publicIps" -o tsv)
 
-# @Azure:~$  ssh droot@${VMIP}
+# @Azure:~$  ssh -i .ssh/id_rsa droot@${VMIP}
 
 # droot@vm001:~$ sudo apt install azure-cli -y 
 
@@ -93,7 +93,7 @@ kubectl describe pod kubia-manual
 
 # droot@vm001:~$ sudo apt-get update
 
-# droot@vm001:~$ apt-get install -y kubectl
+# droot@vm001:~$ sudo apt-get install -y kubectl
 
 # droot@vm001:~$ kubectl version
 
@@ -125,14 +125,14 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 ```sh
 
 ** Clone Github
-# droot@vm001:~$ git clone https://github.com/stv707/kubernetes_training.git
+# droot@vm001:~$ git clone https://github.com/stv707/kubernetes_training_2.git
 
 # droot@vm001:~$ cd kubernetes_training/k-labs/lab12/
 
 ** Create Namespace 
-# droot@vm001:~/kubernetes_training/k-labs/lab12$ kubectl create namespace jedi
+# droot@vm001:~/kubernetes_training_2/k-labs/lab12$ kubectl create namespace jedi
 
-# droot@vm001:~/kubernetes_training/k-labs/lab12$ kubectl create namespace sith
+# droot@vm001:~/kubernetes_training_2/k-labs/lab12$ kubectl create namespace sith
 
 
 * run create_user_namespace.sh to generate kubeconfig 
