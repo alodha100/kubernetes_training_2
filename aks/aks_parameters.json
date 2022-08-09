@@ -12,7 +12,7 @@
             "value": "akslab-dns"
         },
         "kubernetesVersion": {
-            "value": "1.20.9"
+            "value": "1.21.9"
         },
         "networkPlugin": {
             "value": "kubenet"
