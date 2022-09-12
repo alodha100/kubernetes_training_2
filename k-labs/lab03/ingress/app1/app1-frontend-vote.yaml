@@ -19,7 +19,7 @@ spec:
         app: app1-frontend-vote
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": linux
+        "kubernetes.io/os": linux
       containers:
       - name: app1-frontend-vote
         image: stv707/voteapp:v1
