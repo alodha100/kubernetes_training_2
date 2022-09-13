@@ -10,7 +10,7 @@ metadata:
 spec:
   rules:
     # Change to app1.<azure_dns> 
-  - host: app1.a5c3100ed8fc4222aae7.southeastasia.aksapp.io
+  - host: app1.c66361a4adc2449aae2b.eastasia.aksapp.io
 
     http:
       paths:

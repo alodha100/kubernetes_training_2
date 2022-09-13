@@ -8,6 +8,7 @@ spec:
   containers:
   - name: box1
     image: stv707/multitool:v1
+    imagePullPolicy: IfNotPresent
     ports:
     - containerPort: 80
     command: ["/bin/sh", "-ec", "while :; do echo '.'; sleep 5 ; done"]

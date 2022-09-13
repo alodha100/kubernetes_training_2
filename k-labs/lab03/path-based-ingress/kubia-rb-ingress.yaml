@@ -10,7 +10,7 @@ metadata:
 spec:
   rules:
     # Change to rb.<azure_dns> 
-  - host: rb.a5c3100ed8fc4222aae7.southeastasia.aksapp.io
+  - host: rb.c66361a4adc2449aae2b.eastasia.aksapp.io
     http:
       paths:
       - path: /blue
@@ -22,7 +22,7 @@ spec:
               number: 80
               
     # Change to rb.<azure_dns>           
-  - host: rb.a5c3100ed8fc4222aae7.southeastasia.aksapp.io
+  - host: rb.c66361a4adc2449aae2b.eastasia.aksapp.io
     http:          
       paths:
       - path: /red

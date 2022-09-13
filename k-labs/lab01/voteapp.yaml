@@ -13,7 +13,7 @@ spec:
         app: voteapp-backend
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": linux
+        "kubernetes.io/os": linux
       containers:
       - name: voteapp-backend
         image: redis
@@ -54,7 +54,7 @@ spec:
         app: voteapp-frontend
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": linux
+        "kubernetes.io/os": linux
       containers:
       - name: voteapp-frontend
         image: stv707/voteapp:v1
