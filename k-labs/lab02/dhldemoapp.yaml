@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dhldemoapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dhldemoapp
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  template:
+    metadata:
+      labels:
+        app: dhldemoapp
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: dhldemoapp
+        image: stv707/dhldemoapp:v1
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+      tolerations:
+      - key: extra
+        operator: "Equal"
+        value: "amd"
+        effect: "NoSchedule"
+      - key: gpu
+        operator: "Equal"
+        value: "nvidia"
+        effect: "NoSchedule"
+---  
+apiVersion: v1
+kind: Service
+metadata:
+  name: dhldemoapp
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: dhldemoapp

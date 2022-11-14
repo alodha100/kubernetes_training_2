@@ -1,10 +1,17 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kubia-extra
-  labels: 
-    app: kubiamx9999 
+  name: kubia-liveness
+  labels:
+     app: kubiarc
 spec:
   containers:
-  - image: stv707/kubia:v14
+  - image: luksa/kubia-unhealthy
     name: kubia
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 8080
+    ports:
+    - containerPort: 8080
+      protocol: TCP

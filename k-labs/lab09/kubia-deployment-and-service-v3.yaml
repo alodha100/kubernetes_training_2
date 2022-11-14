@@ -16,15 +16,3 @@ spec:
       containers:
       - image: stv707/kubia:v3
         name: nodejs
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: kubia
-spec:
-  type: ClusterIP
-  selector:
-    app: kubia
-  ports:
-  - port: 80
-    targetPort: 8080
