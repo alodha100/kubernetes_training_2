@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: dhldemoapp
 spec:
-  replicas: 3
+  replicas: 8
   selector:
     matchLabels:
       app: dhldemoapp
@@ -21,7 +21,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: dhldemoapp
-        image: stv707/dhldemoapp:v1
+        image: stv707/dhldemoapp:v3
         ports:
         - containerPort: 3000
         resources:
