@@ -67,6 +67,10 @@ Communication between a Pod and Kubernetes REST API
 
 ```sh
 
+kubectl apply -f crole.yaml
+
+kubectl create clusterrolebinding reader-pod-admin --clusterrole=cluster-role --serviceaccount=default:default
+
 kubectl create -f curl.yaml
 kubectl exec -it curl -- sh
  # env | grep KUBERNETES_SERVICE
