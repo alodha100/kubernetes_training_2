@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: azure-disk-4g
+  name: azure-disk-2g
 spec:
   accessModes:
   - ReadWriteOnce
   storageClassName: default
   resources:
     requests:
-      storage: 4Gi    
+      storage: 2Gi    
