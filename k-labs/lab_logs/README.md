@@ -35,5 +35,4 @@ shell# kubectl logs counter count-log-1
 shell# kubectl logs counter count-log-2
 
 shell# kubectl delete pod counter --force
-
 ```
