@@ -13,8 +13,8 @@ spec:
       i=0;
       while true;
       do
-        echo "$i: $(date)" >> /var/log/1.log;
-        echo "$(date) INFO $i" >> /var/log/2.log;
+        echo "$i: $(date) - LOG1" >> /var/log/1.log;
+        echo "$i: $(date) - LOG2" >> /var/log/2.log;
         i=$((i+1));
         sleep 1;
       done
